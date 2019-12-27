@@ -18,6 +18,8 @@ class ColorPickerForm extends Component {
     ValidatorForm.addValidationRule('isColorNameUnique', value => colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase()));
 
     ValidatorForm.addValidationRule('isColorUnique', value => colors.every(({ color }) => color !== currentColor));
+
+    ValidatorForm.addValidationRule('MaxLength', value => value.length < 10);
   }
 
   updateCurrentColor = ({ hex }) => {
@@ -61,8 +63,8 @@ class ColorPickerForm extends Component {
             variant="filled"
             margin="normal"
             onChange={this.handleChange}
-            validators={['required', 'isColorNameUnique', 'isColorUnique']}
-            errorMessages={['Enter a color name', 'Color name must be unique', 'Color already used!']}
+            validators={['required', 'isColorNameUnique', 'isColorUnique', 'MaxLength']}
+            errorMessages={['Enter a color name', 'Color name must be unique', 'Color already used!', 'The maximum length of a color name is 9']}
           />
           <Button
             variant="contained"

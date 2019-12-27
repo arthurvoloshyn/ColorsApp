@@ -33,6 +33,7 @@ export default {
     alignItems: 'flex-start',
     flexDirection: 'column',
     flexWrap: 'wrap',
+    marginBottom: '32px',
     [down('xl')]: {
       width: '80%'
     },
