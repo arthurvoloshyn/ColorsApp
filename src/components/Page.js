@@ -1,6 +1,16 @@
-import React from "react";
-import "../styles/page/Page.css";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Page = ({ children }) => <section className='page'>{children}</section>;
+import '../styles/page/Page.css';
+
+const Page = ({ children }) => <section className="page">{children}</section>;
+
+Page.propTypes = {
+  children: PropTypes.element
+};
+
+Page.defaultProps = {
+  children: null
+};
 
 export default Page;

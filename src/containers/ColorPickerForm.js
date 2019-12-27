@@ -1,30 +1,27 @@
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { ChromePicker } from "react-color";
-import { withStyles } from "@material-ui/core/styles";
-import styles from "../styles/ColorPickerFormStyles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { ChromePicker } from 'react-color';
+
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+import styles from '../styles/ColorPickerFormStyles';
 
 class ColorPickerForm extends Component {
-
-  state = { currentColor: "teal", newColorName: "" };
+  state = { currentColor: 'teal', newColorName: '' };
 
   componentDidMount() {
     const { colors } = this.props;
+    const { currentColor } = this.state;
 
-    ValidatorForm.addValidationRule("isColorNameUnique", value =>
-      colors.every(
-        ({ name }) => name.toLowerCase() !== value.toLowerCase()
-      )
-    );
+    ValidatorForm.addValidationRule('isColorNameUnique', value => colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase()));
 
-    ValidatorForm.addValidationRule("isColorUnique", value =>
-      colors.every(({ color }) => color !== this.state.currentColor)
-    );
-  };
+    ValidatorForm.addValidationRule('isColorUnique', value => colors.every(({ color }) => color !== currentColor));
+  }
 
-  updateCurrentColor = (newColor) => {
-    this.setState({ currentColor: newColor.hex });
+  updateCurrentColor = ({ hex }) => {
+    this.setState({ currentColor: hex });
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -35,61 +32,76 @@ class ColorPickerForm extends Component {
 
   handleSubmit = () => {
     const { currentColor, newColorName } = this.state;
+    const { addNewColor } = this.props;
     const newColor = {
       color: currentColor,
       name: newColorName
     };
 
-    this.props.addNewColor(newColor);
-    this.setState({ newColorName: "" });
+    addNewColor(newColor);
+    this.setState({ newColorName: '' });
   };
 
   render() {
-    const { paletteIsFull, classes } = this.props;
+    const {
+      paletteIsFull,
+      classes: { picker, colorNameInput, addColor }
+    } = this.props;
     const { currentColor, newColorName } = this.state;
 
     return (
       <div>
-        <ChromePicker
-          color={currentColor}
-          onChangeComplete={this.updateCurrentColor}
-          className={classes.picker}
-        />
-        <ValidatorForm
-          onSubmit={this.handleSubmit}
-          ref='form'
-          instantValidate={false}
-        >
+        <ChromePicker color={currentColor} onChangeComplete={this.updateCurrentColor} className={picker} />
+        <ValidatorForm onSubmit={this.handleSubmit} ref={ref => (this.form = ref)} instantValidate={false}>
           <TextValidator
             value={newColorName}
-            className={classes.colorNameInput}
-            placeholder='Color Name'
-            name='newColorName'
-            variant='filled'
-            margin='normal'
+            className={colorNameInput}
+            placeholder="Color Name"
+            name="newColorName"
+            variant="filled"
+            margin="normal"
             onChange={this.handleChange}
-            validators={["required", "isColorNameUnique", "isColorUnique"]}
-            errorMessages={[
-              "Enter a color name",
-              "Color name must be unique",
-              "Color already used!"
-            ]}
+            validators={['required', 'isColorNameUnique', 'isColorUnique']}
+            errorMessages={['Enter a color name', 'Color name must be unique', 'Color already used!']}
           />
           <Button
-            variant='contained'
-            type='submit'
-            color='primary'
+            variant="contained"
+            type="submit"
+            color="primary"
             disabled={paletteIsFull}
-            className={classes.addColor}
+            className={addColor}
             style={{
-              backgroundColor: paletteIsFull ? "grey" : currentColor
+              backgroundColor: paletteIsFull ? 'grey' : currentColor
             }}
           >
-            {paletteIsFull ? "Palette Full" : "Add Color"}
+            {paletteIsFull ? 'Palette Full' : 'Add Color'}
           </Button>
         </ValidatorForm>
       </div>
     );
   }
 }
+
+ColorPickerForm.propTypes = {
+  classes: PropTypes.shape({
+    picker: PropTypes.string,
+    colorNameInput: PropTypes.string,
+    addColor: PropTypes.string
+  }),
+  paletteIsFull: PropTypes.bool,
+  addNewColor: PropTypes.func,
+  colors: PropTypes.array
+};
+
+ColorPickerForm.defaultProps = {
+  classes: {
+    picker: '',
+    colorNameInput: '',
+    addColor: ''
+  },
+  paletteIsFull: false,
+  addNewColor: () => {},
+  colors: []
+};
+
 export default withStyles(styles)(ColorPickerForm);

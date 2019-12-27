@@ -1,12 +1,14 @@
-import React, { Component } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Link } from "react-router-dom";
-import classNames from "classnames";
-import { withStyles } from "@material-ui/styles";
-import styles from "../styles/ColorBoxStyles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+
+import { withStyles } from '@material-ui/styles';
+
+import styles from '../styles/ColorBoxStyles';
 
 class ColorBox extends Component {
-
   state = { copied: false };
 
   changeCopyState = () => {
@@ -15,44 +17,48 @@ class ColorBox extends Component {
     });
   };
 
+  stopPropagation = e => {
+    e.stopPropagation();
+  };
+
   render() {
     const {
       name,
       background,
       moreUrl,
       showingFullPalette,
-      classes
+      classes: { ColorBox, copyOverlay, copyMessage, copyText, boxContent, colorName, copyButton, seeMore, showOverlay, showMessage }
     } = this.props;
 
     const { copied } = this.state;
 
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
-        <div style={{ background }} className={classes.ColorBox}>
+        <div style={{ background: background }} className={ColorBox}>
           <div
-            style={{ background }}
-            className={classNames(classes.copyOverlay, {
-              [classes.showOverlay]: copied
+            style={{ background: background }}
+            className={classNames(copyOverlay, {
+              [showOverlay]: copied
             })}
           />
 
           <div
-            className={classNames(classes.copyMessage, {
-              [classes.showMessage]: copied
+            className={classNames(copyMessage, {
+              [showMessage]: copied
             })}
           >
             <h1>copied!</h1>
-            <p className={classes.copyText}>{background}</p>
+            <p className={copyText}>{background}</p>
           </div>
           <div>
-            <div className={classes.boxContent}>
-              <span className={classes.colorName}>{name}</span>
+            <div className={boxContent}>
+              <span className={colorName}>{name}</span>
             </div>
-            <button className={classes.copyButton}>Copy</button>
+            <button className={copyButton}>Copy</button>
           </div>
           {showingFullPalette && (
-            <Link to={moreUrl} onClick={e => e.stopPropagation()}>
-              <span className={classes.seeMore}>MORE</span>
+            <Link to={moreUrl} onClick={this.stopPropagation}>
+              <span className={seeMore}>MORE</span>
             </Link>
           )}
         </div>
@@ -60,4 +66,47 @@ class ColorBox extends Component {
     );
   }
 }
+
+ColorBox.propTypes = {
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    ColorBox: PropTypes.string,
+    copyOverlay: PropTypes.string,
+    copyMessage: PropTypes.string,
+    copyText: PropTypes.string,
+    boxContent: PropTypes.string,
+    colorName: PropTypes.string,
+    copyButton: PropTypes.string,
+    seeMore: PropTypes.string,
+    showOverlay: PropTypes.string,
+    showMessage: PropTypes.string,
+    deleteIcon: PropTypes.string
+  }),
+  showingFullPalette: PropTypes.bool,
+  background: PropTypes.string,
+  name: PropTypes.string,
+  moreUrl: PropTypes.string
+};
+
+ColorBox.defaultProps = {
+  classes: {
+    root: '',
+    ColorBox: '',
+    copyOverlay: '',
+    copyMessage: '',
+    copyText: '',
+    boxContent: '',
+    colorName: '',
+    copyButton: '',
+    seeMore: '',
+    showOverlay: '',
+    showMessage: '',
+    deleteIcon: ''
+  },
+  showingFullPalette: false,
+  background: '',
+  name: '',
+  moreUrl: '#'
+};
+
 export default withStyles(styles)(ColorBox);

@@ -1,38 +1,47 @@
-import { DRAWER_WIDTH } from "../constants/";
-import sizes from "./sizes/";
+import { DRAWER_WIDTH } from '../constants/';
+
+import sizes from './sizes/';
 
 const drawerWidth = DRAWER_WIDTH;
 
-const styles = theme => ({
+const { down } = sizes;
+
+const styles = ({
+  transitions: {
+    create,
+    easing: { sharp, easeOut },
+    duration: { leavingScreen, enteringScreen }
+  }
+}) => ({
   root: {
-    display: "flex"
+    display: 'flex'
   },
   hide: {
-    display: "none"
+    display: 'none'
   },
   appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+    transition: create(['margin', 'width'], {
+      easing: sharp,
+      duration: leavingScreen
     }),
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "64px",
-    [sizes.down("md")]: {
-      height: "74px"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '64px',
+    [down('md')]: {
+      height: '74px'
     }
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
+    transition: create(['margin', 'width'], {
+      easing: easeOut,
+      duration: enteringScreen
     }),
-    [sizes.down("md")]: {
-      marginLeft: "320px",
-      width: `calc(100% - 320px)`,
+    [down('md')]: {
+      marginLeft: '320px',
+      width: `calc(100% - 320px)`
     }
   },
   menuButton: {
@@ -40,25 +49,25 @@ const styles = theme => ({
     marginRight: 20
   },
   navBtns: {
-    marginRight: "1rem",
-    "& a": {
-      textDecoration: "none"
+    marginRight: '1rem',
+    '& a': {
+      textDecoration: 'none'
     },
-    [sizes.down("xs")]: {
-      marginRight: "0.5rem"
+    [down('xs')]: {
+      marginRight: '0.5rem'
     }
   },
   button: {
-    margin: "0 0.5rem",
-    [sizes.down("md")]: {
-      width: "100%"
+    margin: '0 0.5rem',
+    [down('md')]: {
+      width: '100%'
     },
-    [sizes.down("sm")]: {
-      padding: "6px 5px"
+    [down('sm')]: {
+      padding: '6px 5px'
     },
-    [sizes.down("xs")]: {
-      margin: "0 0.2rem",
-      padding: "0.3rem"
+    [down('xs')]: {
+      margin: '0 0.2rem',
+      padding: '0.3rem'
     }
   }
 });
