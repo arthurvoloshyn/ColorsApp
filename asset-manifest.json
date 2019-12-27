@@ -1,16 +1,16 @@
 {
-  "main.css": "/ColorsApp/static/css/main.ddf488c7.chunk.css",
-  "main.js": "/ColorsApp/static/js/main.764eb976.chunk.js",
-  "main.js.map": "/ColorsApp/static/js/main.764eb976.chunk.js.map",
+  "main.css": "/ColorsApp/static/css/main.969dbf75.chunk.css",
+  "main.js": "/ColorsApp/static/js/main.c91ad45d.chunk.js",
+  "main.js.map": "/ColorsApp/static/js/main.c91ad45d.chunk.js.map",
   "runtime~main.js": "/ColorsApp/static/js/runtime~main.bf9388df.js",
   "runtime~main.js.map": "/ColorsApp/static/js/runtime~main.bf9388df.js.map",
-  "static/css/2.93bafb6d.chunk.css": "/ColorsApp/static/css/2.93bafb6d.chunk.css",
-  "static/js/2.c9f83dcb.chunk.js": "/ColorsApp/static/js/2.c9f83dcb.chunk.js",
-  "static/js/2.c9f83dcb.chunk.js.map": "/ColorsApp/static/js/2.c9f83dcb.chunk.js.map",
+  "static/css/2.a7c27d41.chunk.css": "/ColorsApp/static/css/2.a7c27d41.chunk.css",
+  "static/js/2.b300ab06.chunk.js": "/ColorsApp/static/js/2.b300ab06.chunk.js",
+  "static/js/2.b300ab06.chunk.js.map": "/ColorsApp/static/js/2.b300ab06.chunk.js.map",
   "index.html": "/ColorsApp/index.html",
-  "precache-manifest.ea3baa24b80e6d59ea3e554d6729f0a4.js": "/ColorsApp/precache-manifest.ea3baa24b80e6d59ea3e554d6729f0a4.js",
+  "precache-manifest.1c5da9959469638248b9c14b64f4760c.js": "/ColorsApp/precache-manifest.1c5da9959469638248b9c14b64f4760c.js",
   "service-worker.js": "/ColorsApp/service-worker.js",
-  "static/css/2.93bafb6d.chunk.css.map": "/ColorsApp/static/css/2.93bafb6d.chunk.css.map",
-  "static/css/main.ddf488c7.chunk.css.map": "/ColorsApp/static/css/main.ddf488c7.chunk.css.map",
-  "static/media/bg.svg": "/ColorsApp/static/media/bg.77428cd4.svg"
+  "static/css/2.a7c27d41.chunk.css.map": "/ColorsApp/static/css/2.a7c27d41.chunk.css.map",
+  "static/css/main.969dbf75.chunk.css.map": "/ColorsApp/static/css/main.969dbf75.chunk.css.map",
+  "static/media/bg.svg": "/ColorsApp/static/media/bg.bc702fde.svg"
 }
