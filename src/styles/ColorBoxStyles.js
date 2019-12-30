@@ -1,3 +1,5 @@
+import chroma from 'chroma-js';
+
 import sizes from './sizes/';
 
 const { down } = sizes;
@@ -5,7 +7,7 @@ const { down } = sizes;
 export default {
   ColorBox: {
     width: '20%',
-    height: '25%',
+    height: ({ showingFullPalette }) => (showingFullPalette ? '25%' : '50%'),
     margin: '0 auto',
     display: 'inline-block',
     position: 'relative',
@@ -16,25 +18,25 @@ export default {
     },
     [down('lg')]: {
       width: '25%',
-      height: '20%'
+      height: ({ showingFullPalette }) => (showingFullPalette ? '20%' : '33.3333%')
     },
     [down('md')]: {
       width: '50%',
-      height: '10%'
+      height: ({ showingFullPalette }) => (showingFullPalette ? '10%' : '20%')
     },
     [down('xs')]: {
       width: '100%',
-      height: '5%'
+      height: ({ showingFullPalette }) => (showingFullPalette ? '5%' : '10%')
     }
   },
   copyText: {
-    color: 'white'
+    color: ({ background }) => (chroma(background).luminance() >= 0.7 ? 'black' : 'white')
   },
   colorName: {
-    color: 'black'
+    color: ({ background }) => (chroma(background).luminance() <= 0.08 ? 'white' : 'black')
   },
   seeMore: {
-    color: 'white',
+    color: ({ background }) => (chroma(background).luminance() >= 0.7 ? 'rgba(0,0,0,0.6)' : 'white'),
     background: 'rgba(255, 255, 255, 0.3)',
     position: 'absolute',
     border: 'none',
@@ -47,7 +49,7 @@ export default {
     textTransform: 'uppercase'
   },
   copyButton: {
-    color: 'white',
+    color: ({ background }) => (chroma(background).luminance() >= 0.7 ? 'rgba(0,0,0,0.6)' : 'white'),
     width: '100px',
     height: '30px',
     position: 'absolute',
