@@ -35,9 +35,11 @@ class PaletteList extends Component {
   };
 
   goToPalette = id => {
-    const { history } = this.props;
+    const {
+      history: { push }
+    } = this.props;
 
-    history.push(`/palette/${id}`);
+    push(`/palette/${id}`);
   };
 
   handleDelete = () => {
@@ -110,7 +112,9 @@ PaletteList.propTypes = {
   }),
   palettes: PropTypes.array,
   deletePalette: PropTypes.func,
-  history: PropTypes.object
+  history: PropTypes.shape({
+    push: PropTypes.func
+  })
 };
 
 PaletteList.defaultProps = {
@@ -123,7 +127,9 @@ PaletteList.defaultProps = {
   },
   palettes: [],
   deletePalette: () => {},
-  history: {}
+  history: {
+    push: () => {}
+  }
 };
 
 export default withStyles(styles)(PaletteList);

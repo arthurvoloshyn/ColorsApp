@@ -65,14 +65,17 @@ class NewPaletteForm extends Component {
   };
 
   handleSubmit = newPalette => {
-    const { savePalette, history } = this.props;
+    const {
+      savePalette,
+      history: { push }
+    } = this.props;
     const { colors } = this.state;
     const { paletteName } = newPalette;
 
     newPalette.id = paletteName.toLowerCase().replace(/ /g, '-');
     newPalette.colors = colors;
     savePalette(newPalette);
-    history.push('/');
+    push('/');
   };
 
   removeColor = colorName => {
@@ -158,7 +161,9 @@ NewPaletteForm.propTypes = {
     contentShift: PropTypes.string
   }),
   maxColors: PropTypes.number,
-  history: PropTypes.object,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }),
   savePalette: PropTypes.func,
   palettes: PropTypes.array
 };
@@ -177,7 +182,9 @@ NewPaletteForm.defaultProps = {
     contentShift: ''
   },
   maxColors: 20,
-  history: {},
+  history: {
+    push: () => {}
+  },
   savePalette: () => {},
   palettes: []
 };
