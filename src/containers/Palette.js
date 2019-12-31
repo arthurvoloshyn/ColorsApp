@@ -49,7 +49,7 @@ Palette.propTypes = {
     colors: PropTypes.string
   }),
   palette: PropTypes.shape({
-    colors: PropTypes.object,
+    colors: PropTypes.object.isRequired,
     paletteName: PropTypes.string,
     emoji: PropTypes.string,
     id: PropTypes.string
@@ -62,7 +62,6 @@ Palette.defaultProps = {
     colors: ''
   },
   palette: {
-    colors: {},
     paletteName: '',
     emoji: '',
     id: ''

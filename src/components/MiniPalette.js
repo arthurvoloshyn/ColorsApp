@@ -48,7 +48,6 @@ MiniPalette.propTypes = {
     title: PropTypes.string,
     emoji: PropTypes.string
   }),
-  paletteIsFull: PropTypes.bool,
   openDialog: PropTypes.func,
   goToPalette: PropTypes.func,
   colors: PropTypes.array,
@@ -66,7 +65,6 @@ MiniPalette.defaultProps = {
     title: '',
     emoji: ''
   },
-  paletteIsFull: false,
   openDialog: () => {},
   goToPalette: () => {},
   colors: [],
