@@ -106,7 +106,7 @@ ColorBox.defaultProps = {
   showingFullPalette: false,
   background: '',
   name: '',
-  moreUrl: '#'
+  moreUrl: '/'
 };
 
 export default withStyles(styles)(ColorBox);
