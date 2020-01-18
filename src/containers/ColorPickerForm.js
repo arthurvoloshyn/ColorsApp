@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
@@ -11,7 +11,7 @@ import styles from '../styles/ColorPickerFormStyles';
 class ColorPickerForm extends Component {
   state = { currentColor: 'teal', newColorName: '' };
 
-  form = React.createRef();
+  form = createRef();
 
   componentDidMount() {
     const { colors } = this.props;
