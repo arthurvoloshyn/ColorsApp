@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../styles/page/Page.css';
 
-const Page = ({ children }) => <section className="page">{children}</section>;
+const Page = ({ children }) => <div className="page">{children}</div>;
 
 Page.propTypes = {
   children: PropTypes.element
