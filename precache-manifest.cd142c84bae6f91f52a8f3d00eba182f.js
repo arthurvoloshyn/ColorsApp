@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/ColorsApp/static/js/runtime~main.bf9388df.js"
   },
   {
-    "revision": "c4f2b0cca6e1d087ab4d",
-    "url": "/ColorsApp/static/js/main.b4d135d5.chunk.js"
+    "revision": "f0b7e38468c8e1a86de3",
+    "url": "/ColorsApp/static/js/main.c9d82f57.chunk.js"
   },
   {
     "revision": "d5dd5021ae82d3bc0bfc",
     "url": "/ColorsApp/static/js/2.dfb4a735.chunk.js"
   },
   {
-    "revision": "c4f2b0cca6e1d087ab4d",
+    "revision": "f0b7e38468c8e1a86de3",
     "url": "/ColorsApp/static/css/main.969dbf75.chunk.css"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/ColorsApp/static/css/2.a7c27d41.chunk.css"
   },
   {
-    "revision": "452a3f1f064195ab204b35b8d59f5f5b",
+    "revision": "96b210ab436e8282e70a72377799f20b",
     "url": "/ColorsApp/index.html"
   }
 ];
