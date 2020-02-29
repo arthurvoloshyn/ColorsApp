@@ -12,6 +12,36 @@ import ColorBox from './ColorBox';
 import styles from '../styles/PaletteStyles';
 
 class SingleColorPalette extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      Palette: PropTypes.string,
+      colors: PropTypes.string,
+      goBack: PropTypes.string
+    }),
+    palette: PropTypes.shape({
+      paletteName: PropTypes.string,
+      emoji: PropTypes.string,
+      id: PropTypes.string,
+      colors: PropTypes.object
+    }),
+    colorId: PropTypes.string
+  };
+
+  static defaultProps = {
+    classes: {
+      Palette: '',
+      colors: '',
+      goBack: ''
+    },
+    palette: {
+      paletteName: '',
+      emoji: '',
+      id: '',
+      colors: {}
+    },
+    colorId: ''
+  };
+
   constructor(props) {
     super(props);
 
@@ -64,35 +94,5 @@ class SingleColorPalette extends Component {
     );
   }
 }
-
-SingleColorPalette.propTypes = {
-  classes: PropTypes.shape({
-    Palette: PropTypes.string,
-    colors: PropTypes.string,
-    goBack: PropTypes.string
-  }),
-  palette: PropTypes.shape({
-    paletteName: PropTypes.string,
-    emoji: PropTypes.string,
-    id: PropTypes.string,
-    colors: PropTypes.object
-  }),
-  colorId: PropTypes.string
-};
-
-SingleColorPalette.defaultProps = {
-  classes: {
-    Palette: '',
-    colors: '',
-    goBack: ''
-  },
-  palette: {
-    paletteName: '',
-    emoji: '',
-    id: '',
-    colors: {}
-  },
-  colorId: ''
-};
 
 export default withStyles(styles)(SingleColorPalette);

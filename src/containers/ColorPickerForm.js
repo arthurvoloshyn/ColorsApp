@@ -9,6 +9,28 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/ColorPickerFormStyles';
 
 class ColorPickerForm extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      picker: PropTypes.string,
+      colorNameInput: PropTypes.string,
+      addColor: PropTypes.string
+    }),
+    paletteIsFull: PropTypes.bool,
+    addNewColor: PropTypes.func,
+    colors: PropTypes.array
+  };
+
+  static defaultProps = {
+    classes: {
+      picker: '',
+      colorNameInput: '',
+      addColor: ''
+    },
+    paletteIsFull: false,
+    addNewColor: () => {},
+    colors: []
+  };
+
   state = { currentColor: 'teal', newColorName: '' };
 
   form = createRef();
@@ -85,27 +107,5 @@ class ColorPickerForm extends Component {
     );
   }
 }
-
-ColorPickerForm.propTypes = {
-  classes: PropTypes.shape({
-    picker: PropTypes.string,
-    colorNameInput: PropTypes.string,
-    addColor: PropTypes.string
-  }),
-  paletteIsFull: PropTypes.bool,
-  addNewColor: PropTypes.func,
-  colors: PropTypes.array
-};
-
-ColorPickerForm.defaultProps = {
-  classes: {
-    picker: '',
-    colorNameInput: '',
-    addColor: ''
-  },
-  paletteIsFull: false,
-  addNewColor: () => {},
-  colors: []
-};
 
 export default withStyles(styles)(ColorPickerForm);

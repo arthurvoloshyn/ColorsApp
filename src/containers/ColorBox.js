@@ -9,6 +9,48 @@ import { withStyles } from '@material-ui/styles';
 import styles from '../styles/ColorBoxStyles';
 
 class ColorBox extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      root: PropTypes.string,
+      ColorBox: PropTypes.string,
+      copyOverlay: PropTypes.string,
+      copyMessage: PropTypes.string,
+      copyText: PropTypes.string,
+      boxContent: PropTypes.string,
+      colorName: PropTypes.string,
+      copyButton: PropTypes.string,
+      seeMore: PropTypes.string,
+      showOverlay: PropTypes.string,
+      showMessage: PropTypes.string,
+      deleteIcon: PropTypes.string
+    }),
+    showingFullPalette: PropTypes.bool,
+    background: PropTypes.string,
+    name: PropTypes.string,
+    moreUrl: PropTypes.string
+  };
+
+  static defaultProps = {
+    classes: {
+      root: '',
+      ColorBox: '',
+      copyOverlay: '',
+      copyMessage: '',
+      copyText: '',
+      boxContent: '',
+      colorName: '',
+      copyButton: '',
+      seeMore: '',
+      showOverlay: '',
+      showMessage: '',
+      deleteIcon: ''
+    },
+    showingFullPalette: false,
+    background: '',
+    name: '',
+    moreUrl: '/'
+  };
+
   state = { copied: false };
 
   changeCopyState = () => {
@@ -66,47 +108,5 @@ class ColorBox extends Component {
     );
   }
 }
-
-ColorBox.propTypes = {
-  classes: PropTypes.shape({
-    root: PropTypes.string,
-    ColorBox: PropTypes.string,
-    copyOverlay: PropTypes.string,
-    copyMessage: PropTypes.string,
-    copyText: PropTypes.string,
-    boxContent: PropTypes.string,
-    colorName: PropTypes.string,
-    copyButton: PropTypes.string,
-    seeMore: PropTypes.string,
-    showOverlay: PropTypes.string,
-    showMessage: PropTypes.string,
-    deleteIcon: PropTypes.string
-  }),
-  showingFullPalette: PropTypes.bool,
-  background: PropTypes.string,
-  name: PropTypes.string,
-  moreUrl: PropTypes.string
-};
-
-ColorBox.defaultProps = {
-  classes: {
-    root: '',
-    ColorBox: '',
-    copyOverlay: '',
-    copyMessage: '',
-    copyText: '',
-    boxContent: '',
-    colorName: '',
-    copyButton: '',
-    seeMore: '',
-    showOverlay: '',
-    showMessage: '',
-    deleteIcon: ''
-  },
-  showingFullPalette: false,
-  background: '',
-  name: '',
-  moreUrl: '/'
-};
 
 export default withStyles(styles)(ColorBox);
