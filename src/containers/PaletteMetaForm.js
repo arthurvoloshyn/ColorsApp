@@ -13,6 +13,18 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import 'emoji-mart/css/emoji-mart.css';
 
 class PaletteMetaForm extends Component {
+  static propTypes = {
+    palettes: PropTypes.array,
+    handleSubmit: PropTypes.func,
+    hideForm: PropTypes.func
+  };
+
+  static defaultProps = {
+    palettes: [],
+    handleSubmit: () => {},
+    hideForm: () => {}
+  };
+
   state = {
     stage: 'form',
     newPaletteName: ''
@@ -95,17 +107,5 @@ class PaletteMetaForm extends Component {
     );
   }
 }
-
-PaletteMetaForm.propTypes = {
-  palettes: PropTypes.array,
-  handleSubmit: PropTypes.func,
-  hideForm: PropTypes.func
-};
-
-PaletteMetaForm.defaultProps = {
-  palettes: [],
-  handleSubmit: () => {},
-  hideForm: () => {}
-};
 
 export default PaletteMetaForm;

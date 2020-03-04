@@ -11,6 +11,31 @@ import Navbar from './Navbar';
 import styles from '../styles/PaletteStyles';
 
 class Palette extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      Palette: PropTypes.string,
+      colors: PropTypes.string
+    }),
+    palette: PropTypes.shape({
+      colors: PropTypes.object.isRequired,
+      paletteName: PropTypes.string,
+      emoji: PropTypes.string,
+      id: PropTypes.string
+    })
+  };
+
+  static defaultProps = {
+    classes: {
+      Palette: '',
+      colors: ''
+    },
+    palette: {
+      paletteName: '',
+      emoji: '',
+      id: ''
+    }
+  };
+
   state = { level: 500, format: 'hex' };
 
   changeLevel = level => {
@@ -42,30 +67,5 @@ class Palette extends Component {
     );
   }
 }
-
-Palette.propTypes = {
-  classes: PropTypes.shape({
-    Palette: PropTypes.string,
-    colors: PropTypes.string
-  }),
-  palette: PropTypes.shape({
-    colors: PropTypes.object.isRequired,
-    paletteName: PropTypes.string,
-    emoji: PropTypes.string,
-    id: PropTypes.string
-  })
-};
-
-Palette.defaultProps = {
-  classes: {
-    Palette: '',
-    colors: ''
-  },
-  palette: {
-    paletteName: '',
-    emoji: '',
-    id: ''
-  }
-};
 
 export default withStyles(styles)(Palette);

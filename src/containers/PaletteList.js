@@ -21,6 +21,36 @@ import MiniPalette from '../components/MiniPalette';
 import styles from '../styles/PaletteListStyles';
 
 class PaletteList extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      root: PropTypes.string,
+      container: PropTypes.string,
+      nav: PropTypes.string,
+      heading: PropTypes.string,
+      palettes: PropTypes.string
+    }),
+    palettes: PropTypes.array,
+    deletePalette: PropTypes.func,
+    history: PropTypes.shape({
+      push: PropTypes.func
+    })
+  };
+
+  static defaultProps = {
+    classes: {
+      root: '',
+      container: '',
+      nav: '',
+      heading: '',
+      palettes: ''
+    },
+    palettes: [],
+    deletePalette: () => {},
+    history: {
+      push: () => {}
+    }
+  };
+
   state = {
     openDeleteDialog: false,
     deletingId: ''
@@ -35,11 +65,9 @@ class PaletteList extends Component {
   };
 
   goToPalette = id => {
-    const {
-      history: { push }
-    } = this.props;
+    const { history } = this.props;
 
-    push(`/palette/${id}`);
+    history.push(`/palette/${id}`);
   };
 
   handleDelete = () => {
@@ -101,35 +129,5 @@ class PaletteList extends Component {
     );
   }
 }
-
-PaletteList.propTypes = {
-  classes: PropTypes.shape({
-    root: PropTypes.string,
-    container: PropTypes.string,
-    nav: PropTypes.string,
-    heading: PropTypes.string,
-    palettes: PropTypes.string
-  }),
-  palettes: PropTypes.array,
-  deletePalette: PropTypes.func,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  })
-};
-
-PaletteList.defaultProps = {
-  classes: {
-    root: '',
-    container: '',
-    nav: '',
-    heading: '',
-    palettes: ''
-  },
-  palettes: [],
-  deletePalette: () => {},
-  history: {
-    push: () => {}
-  }
-};
 
 export default withStyles(styles)(PaletteList);

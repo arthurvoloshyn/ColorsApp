@@ -24,6 +24,48 @@ import styles from '../styles/NewPaletteFormStyles';
 const firstSeedColors = seedColors[0].colors;
 
 class NewPaletteForm extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      root: PropTypes.string,
+      drawer: PropTypes.string,
+      drawerPaper: PropTypes.string,
+      slider: PropTypes.string,
+      drawerHeader: PropTypes.string,
+      container: PropTypes.string,
+      buttons: PropTypes.string,
+      button: PropTypes.string,
+      content: PropTypes.string,
+      contentShift: PropTypes.string
+    }),
+    maxColors: PropTypes.number,
+    history: PropTypes.shape({
+      push: PropTypes.func
+    }),
+    savePalette: PropTypes.func,
+    palettes: PropTypes.array
+  };
+
+  static defaultProps = {
+    classes: {
+      root: '',
+      drawer: '',
+      drawerPaper: '',
+      drawerHeader: '',
+      container: '',
+      buttons: '',
+      logo: '',
+      button: '',
+      content: '',
+      contentShift: ''
+    },
+    maxColors: 20,
+    history: {
+      push: () => {}
+    },
+    savePalette: () => {},
+    palettes: []
+  };
+
   state = {
     open: true,
     colors: firstSeedColors
@@ -65,17 +107,14 @@ class NewPaletteForm extends Component {
   };
 
   handleSubmit = newPalette => {
-    const {
-      savePalette,
-      history: { push }
-    } = this.props;
+    const { savePalette, history } = this.props;
     const { colors } = this.state;
     const { paletteName } = newPalette;
 
     newPalette.id = paletteName.toLowerCase().replace(/ /g, '-');
     newPalette.colors = colors;
     savePalette(newPalette);
-    push('/');
+    history.push('/');
   };
 
   removeColor = colorName => {
@@ -146,48 +185,6 @@ class NewPaletteForm extends Component {
     );
   }
 }
-
-NewPaletteForm.propTypes = {
-  classes: PropTypes.shape({
-    root: PropTypes.string,
-    drawer: PropTypes.string,
-    drawerPaper: PropTypes.string,
-    slider: PropTypes.string,
-    drawerHeader: PropTypes.string,
-    container: PropTypes.string,
-    buttons: PropTypes.string,
-    button: PropTypes.string,
-    content: PropTypes.string,
-    contentShift: PropTypes.string
-  }),
-  maxColors: PropTypes.number,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }),
-  savePalette: PropTypes.func,
-  palettes: PropTypes.array
-};
-
-NewPaletteForm.defaultProps = {
-  classes: {
-    root: '',
-    drawer: '',
-    drawerPaper: '',
-    drawerHeader: '',
-    container: '',
-    buttons: '',
-    logo: '',
-    button: '',
-    content: '',
-    contentShift: ''
-  },
-  maxColors: 20,
-  history: {
-    push: () => {}
-  },
-  savePalette: () => {},
-  palettes: []
-};
 
 const withTheme = { withTheme: true };
 

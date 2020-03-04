@@ -17,6 +17,38 @@ import PaletteMetaForm from './PaletteMetaForm';
 import styles from '../styles/PaletteFormNavStyles';
 
 class PaletteFormNav extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      root: PropTypes.string,
+      appBar: PropTypes.string,
+      appBarShift: PropTypes.string,
+      menuButton: PropTypes.string,
+      hide: PropTypes.string,
+      navBtns: PropTypes.string,
+      button: PropTypes.string
+    }),
+    open: PropTypes.bool,
+    palettes: PropTypes.array,
+    handleSubmit: PropTypes.func,
+    handleDrawerOpen: PropTypes.func
+  };
+
+  static defaultProps = {
+    classes: {
+      root: '',
+      appBar: '',
+      appBarShift: '',
+      menuButton: '',
+      hide: '',
+      navBtns: '',
+      button: ''
+    },
+    open: false,
+    palettes: [],
+    handleSubmit: () => {},
+    handleDrawerOpen: () => {}
+  };
+
   state = { newPaletteName: '', formShowing: false };
 
   handleChange = ({ target: { name, value } }) => {
@@ -84,38 +116,6 @@ class PaletteFormNav extends Component {
     );
   }
 }
-
-PaletteFormNav.propTypes = {
-  classes: PropTypes.shape({
-    root: PropTypes.string,
-    appBar: PropTypes.string,
-    appBarShift: PropTypes.string,
-    menuButton: PropTypes.string,
-    hide: PropTypes.string,
-    navBtns: PropTypes.string,
-    button: PropTypes.string
-  }),
-  open: PropTypes.bool,
-  palettes: PropTypes.array,
-  handleSubmit: PropTypes.func,
-  handleDrawerOpen: PropTypes.func
-};
-
-PaletteFormNav.defaultProps = {
-  classes: {
-    root: '',
-    appBar: '',
-    appBarShift: '',
-    menuButton: '',
-    hide: '',
-    navBtns: '',
-    button: ''
-  },
-  open: false,
-  palettes: [],
-  handleSubmit: () => {},
-  handleDrawerOpen: () => {}
-};
 
 const withTheme = { withTheme: true };
 

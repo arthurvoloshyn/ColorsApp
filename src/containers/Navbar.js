@@ -14,6 +14,32 @@ import CloseIcon from '@material-ui/icons/Close';
 import styles from '../styles/NavbarStyles';
 
 class Navbar extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      Navbar: PropTypes.string,
+      logo: PropTypes.string,
+      slider: PropTypes.string,
+      selectContainer: PropTypes.string
+    }),
+    showingAllColors: PropTypes.bool,
+    handleChange: PropTypes.func,
+    changeLevel: PropTypes.func,
+    level: PropTypes.number
+  };
+
+  static defaultProps = {
+    classes: {
+      Navbar: '',
+      logo: '',
+      slider: '',
+      selectContainer: ''
+    },
+    showingAllColors: false,
+    handleChange: () => {},
+    changeLevel: () => {},
+    level: 0
+  };
+
   state = { format: 'hex', open: false };
 
   handleFormatChange = ({ target: { value } }) => {
@@ -75,31 +101,5 @@ class Navbar extends Component {
     );
   }
 }
-
-Navbar.propTypes = {
-  classes: PropTypes.shape({
-    Navbar: PropTypes.string,
-    logo: PropTypes.string,
-    slider: PropTypes.string,
-    selectContainer: PropTypes.string
-  }),
-  showingAllColors: PropTypes.bool,
-  handleChange: PropTypes.func,
-  changeLevel: PropTypes.func,
-  level: PropTypes.number
-};
-
-Navbar.defaultProps = {
-  classes: {
-    Navbar: '',
-    logo: '',
-    slider: '',
-    selectContainer: ''
-  },
-  showingAllColors: false,
-  handleChange: () => {},
-  changeLevel: () => {},
-  level: 0
-};
 
 export default withStyles(styles)(Navbar);
