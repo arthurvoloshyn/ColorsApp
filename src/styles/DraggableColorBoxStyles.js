@@ -1,5 +1,3 @@
-import chroma from 'chroma-js';
-
 import sizes from './sizes/';
 
 const { down } = sizes;
@@ -36,7 +34,7 @@ const styles = {
     left: '0px',
     bottom: '0px',
     padding: '10px',
-    color: ({ color }) => (chroma(color).luminance() <= 0.08 ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.6)'),
+    color: 'rgba(0,0,0,0.6)',
     letterSpacing: '1px',
     textTransform: 'uppercase',
     fontSize: '12px',
