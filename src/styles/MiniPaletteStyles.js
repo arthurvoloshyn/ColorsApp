@@ -1,7 +1,7 @@
 export default {
   root: {
-    backgroundColor: 'white',
-    border: '1px solid black',
+    backgroundColor: '#fff',
+    border: '1px solid #000',
     borderRadius: '5px',
     padding: '0.5rem',
     position: 'relative',
@@ -23,7 +23,7 @@ export default {
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: '0',
-    color: 'black',
+    color: '#000',
     paddingTop: '0.5rem',
     fontSize: '1rem',
     position: 'relative'
@@ -41,7 +41,7 @@ export default {
     marginBottom: '-3.5px'
   },
   deleteIcon: {
-    color: 'white',
+    color: '#fff',
     backgroundColor: '#eb3d30',
     width: '20px',
     height: '20px',

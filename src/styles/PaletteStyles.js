@@ -20,9 +20,9 @@ export default {
     cursor: 'pointer',
     marginBottom: '-3.5px',
     opacity: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#000',
     '& a': {
-      color: 'white',
+      color: '#fff',
       width: '100px',
       height: '30px',
       position: 'absolute',

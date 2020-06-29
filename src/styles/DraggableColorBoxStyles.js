@@ -14,7 +14,7 @@ const styles = {
     cursor: 'pointer',
     marginBottom: '-3.5px',
     '&:hover svg': {
-      color: 'white',
+      color: '#fff',
       transform: 'scale(1.5)'
     },
     [down('lg')]: {

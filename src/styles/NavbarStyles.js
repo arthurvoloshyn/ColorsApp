@@ -20,7 +20,7 @@ export default {
     alignItems: 'center',
     '& a': {
       textDecoration: 'none',
-      color: 'black'
+      color: '#000'
     },
     [down('xs')]: {
       display: 'none'
