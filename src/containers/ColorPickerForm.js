@@ -41,7 +41,7 @@ class ColorPickerForm extends Component {
 
     ValidatorForm.addValidationRule('isColorNameUnique', value => colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase()));
 
-    ValidatorForm.addValidationRule('isColorUnique', value => colors.every(({ color }) => color !== currentColor));
+    ValidatorForm.addValidationRule('isColorUnique', () => colors.every(({ color }) => color !== currentColor));
 
     ValidatorForm.addValidationRule('MaxLength', value => value.length < 10);
   }
@@ -97,7 +97,7 @@ class ColorPickerForm extends Component {
             disabled={paletteIsFull}
             className={addColor}
             style={{
-              backgroundColor: paletteIsFull ? 'grey' : currentColor
+              backgroundColor: paletteIsFull ? '#808080' : currentColor
             }}
           >
             {paletteIsFull ? 'Palette Full' : 'Add Color'}

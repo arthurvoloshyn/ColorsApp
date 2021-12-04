@@ -58,10 +58,6 @@ class PaletteMetaForm extends Component {
     this.setState({ stage: '' });
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
   handleClose = () => {
     this.setState({ open: false });
   };

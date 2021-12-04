@@ -87,12 +87,6 @@ class NewPaletteForm extends Component {
     });
   };
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({
-      [name]: value
-    });
-  };
-
   clearColors = () => {
     this.setState({ colors: [] });
   };

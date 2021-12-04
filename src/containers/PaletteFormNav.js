@@ -51,12 +51,6 @@ class PaletteFormNav extends Component {
 
   state = { newPaletteName: '', formShowing: false };
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({
-      [name]: value
-    });
-  };
-
   showForm = () => {
     this.setState({ formShowing: true });
   };
